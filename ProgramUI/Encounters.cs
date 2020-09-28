@@ -37,12 +37,25 @@ namespace ProgramUI
                     Console.WriteLine("1) Completed");
                     break;
             }
+            switch (levelTwo)
+            {
+                case false:
+                    Console.WriteLine("2) Dodging Traffic");
+                    break;
+                case true:
+                    Console.WriteLine("2) Completed");
+                    break;
+            }
 
             string input = Console.ReadLine();
 
             if (input == "1" && levelOne == false)
             {
                 LevelOne_RedLobster();
+            }
+            else if(input == "2" && levelTwo == false)
+            {
+                LevelTwo_DodgingTraffic();
             }
             else
             {
@@ -202,27 +215,28 @@ namespace ProgramUI
             bool stepOn = false;
 
             while (isAlive)
+            {
 
                 Console.WriteLine("Sebastian has now found himself in the city and has to navigate the busy streets\n" +
                 "Can you help Sebastian dodge traffic?");
 
-            Console.WriteLine("1) Busy street\n" +
-                "2) Construction Zone \n" +
-                "3) Sidewalk");
+                Console.WriteLine("1) Busy street\n" +
+                    "2) Construction Zone \n" +
+                    "3) Sidewalk");
 
-            switch (Input())
-            {
-                case "1":
-                    Console.WriteLine("Sebastian has to dodge all of the traffic...will he make it?");
-                    break;
-                case "2":
-                    Console.WriteLine("Can he manage to not fall into a man hole in the construction zone?");
-                    break;
-                case "3":
-                    Console.WriteLine("");
-                    break;
+                switch (Input())
+                {
+                    case "1":
+                        Console.WriteLine("Sebastian has to dodge all of the traffic...will he make it?");
+                        break;
+                    case "2":
+                        Console.WriteLine("Can he manage to not fall into a man hole in the construction zone?");
+                        break;
+                    case "3":
+                        Console.WriteLine("");
+                        break;
+                }
             }
-
         }
 
     }
