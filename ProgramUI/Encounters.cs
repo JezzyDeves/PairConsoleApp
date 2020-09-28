@@ -9,9 +9,7 @@ namespace ProgramUI
     public class Encounters
     {
         bool levelOne = false;
-        //Menu - Levels
-        //En
-
+        
         public string Input()
         {
             string userInput = Console.ReadLine();
@@ -57,6 +55,9 @@ namespace ProgramUI
         {
             Console.Clear();
             bool isAlive = true;
+            bool diningRoom = false;
+            bool kitchen = false;
+            bool pantry = false;
 
             while (isAlive)
             {
@@ -102,13 +103,34 @@ namespace ProgramUI
                                     Console.ReadKey();
                                     break;
                                 case "2":
+                                    Console.WriteLine("Sebastian suggests that they eat shrimp instead");
+                                    diningRoom = true;
+                                    Console.WriteLine("Dining Room complete!");
+                                    Console.ReadKey();
                                     break;
                                 case "3":
+                                    Console.WriteLine("Poor Sebastian!");
+                                    inLevel = false;
+                                    isAlive = false;
+                                    Console.ReadKey();
                                     break;
 
                             }
                             break;
                         case "2":
+                            Console.WriteLine("After escaping the Dining Room, Sebastian now finds himself in the kitchen\n"+
+                                "Can he dodge the chef?");
+                            Console.WriteLine("1) Hide in the cabinet\n" +
+                                "2) Caught by Chef\n" +
+                                "3) Run to another area");
+                            switch (Input())
+                            {
+                                case "1":
+                                    Console.WriteLine("Sebastian sees an open cabinet to hide inside.");
+                                    kitchen = true;
+                                    Console.ReadKey();
+                                    break;
+                            }
                             break;
                         case "3":
                             break;
