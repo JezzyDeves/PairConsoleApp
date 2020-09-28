@@ -9,7 +9,8 @@ namespace ProgramUI
     public class Encounters
     {
         bool levelOne = false;
-        
+        bool levelTwo = false;
+
         public string Input()
         {
             string userInput = Console.ReadLine();
@@ -39,7 +40,7 @@ namespace ProgramUI
 
             string input = Console.ReadLine();
 
-            if(input == "1" && levelOne == false)
+            if (input == "1" && levelOne == false)
             {
                 LevelOne_RedLobster();
             }
@@ -73,7 +74,7 @@ namespace ProgramUI
                 bool inLevel = true;
                 while (inLevel)
                 {
-                    if(diningRoom == true && kitchen == true && pantry == true)
+                    if (diningRoom == true && kitchen == true && pantry == true)
                     {
                         levelOne = true;
                         Console.WriteLine("You win the level!");
@@ -126,7 +127,7 @@ namespace ProgramUI
                             }
                             break;
                         case "2":
-                            Console.WriteLine("After escaping the Dining Room, Sebastian now finds himself in the kitchen\n"+
+                            Console.WriteLine("After escaping the Dining Room, Sebastian now finds himself in the kitchen\n" +
                                 "Can he dodge the chef?");
                             Console.WriteLine("1) Hide in the cabinet\n" +
                                 "2) Try to run past the chef\n" +
@@ -192,7 +193,37 @@ namespace ProgramUI
             Console.ReadKey();
             LevelSelect();
         }
-        
+        public void LevelTwo_DodgingTraffic()
+        {
+            Console.Clear();
+            bool isAlive = true;
+            bool hitByCar = false;
+            bool manHole = false;
+            bool stepOn = false;
+
+            while (isAlive)
+
+                Console.WriteLine("Sebastian has now found himself in the city and has to navigate the busy streets\n" +
+                "Can you help Sebastian dodge traffic?");
+
+            Console.WriteLine("1) Busy street\n" +
+                "2) Construction Zone \n" +
+                "3) Sidewalk");
+
+            switch (Input())
+            {
+                case "1":
+                    Console.WriteLine("Sebastian has to dodge all of the traffic...will he make it?");
+                    break;
+                case "2":
+                    Console.WriteLine("Can he manage to not fall into a man hole in the construction zone?");
+                    break;
+                case "3":
+                    Console.WriteLine("");
+                    break;
+            }
+
+        }
 
     }
 }
