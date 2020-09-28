@@ -8,5 +8,20 @@ namespace ProgramUI
 {
     public class Encounters
     {
+        //Menu - Levels
+        //En
+        public void LevelSelect()
+        {
+            Console.WriteLine("1) Level One");
+            string input = Console.ReadLine();
+            switch (input)
+            {
+                case "1":
+                    break;
+            }
+               
+        }
+        
+
     }
 }
