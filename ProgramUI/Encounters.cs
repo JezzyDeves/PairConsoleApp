@@ -14,18 +14,20 @@ namespace ProgramUI
 
         public string Input()
         {
-            string input = Console.ReadLine();
-            return input;
+            string userInput = Console.ReadLine();
+            return userInput;
         }
         public void LevelSelect()
         {
             Console.Clear();
+            Console.ForegroundColor = ConsoleColor.White;
 
             Console.WriteLine(@"   __                __  ____    __        __ 
   / /  ___ _  _____ / / / __/__ / /__ ____/ /_
  / /__/ -_) |/ / -_) / _\ \/ -_) / -_) __/ __/
 /____/\__/|___/\__/_/ /___/\__/_/\__/\__/\__/ 
-                                              ");
+                                              
+");
 
             switch (levelOne)
             {
@@ -72,7 +74,7 @@ namespace ProgramUI
                 {
                     Console.WriteLine("1) Go to the Dining Area\n" +
                         "2) Go to the Kitchen\n" +
-                        "Go to the Pantry");
+                        "3) Go to the Pantry");
 
                     string input = Console.ReadLine();
                     switch (input)
@@ -88,6 +90,21 @@ namespace ProgramUI
                             Console.WriteLine("1) Attack the customers\n" +
                                 "2) Debate the ethics of their food choice\n" +
                                 "3) Be a crab");
+                            switch (Input())
+                            {
+                                case "1":
+                                    Console.WriteLine("You attack the customers\n" +
+                                        "A shocked customer steps on you!");
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("---YOU DIED---");
+                                    inLevel = false;
+                                    isAlive = false;
+                                    Console.ReadKey();
+                                    break;
+                                case "2":
+                                    break;
+
+                            }
                             break;
                         case "2":
                             break;
