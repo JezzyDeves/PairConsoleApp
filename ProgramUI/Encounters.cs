@@ -73,6 +73,14 @@ namespace ProgramUI
                 bool inLevel = true;
                 while (inLevel)
                 {
+                    if(diningRoom == true && kitchen == true && pantry == true)
+                    {
+                        levelOne = true;
+                        Console.WriteLine("You win the level!");
+                        Console.ReadKey();
+                        LevelSelect();
+                        break;
+                    }
                     Console.WriteLine("1) Go to the Dining Area\n" +
                         "2) Go to the Kitchen\n" +
                         "3) Go to the Pantry");
@@ -121,7 +129,7 @@ namespace ProgramUI
                             Console.WriteLine("After escaping the Dining Room, Sebastian now finds himself in the kitchen\n"+
                                 "Can he dodge the chef?");
                             Console.WriteLine("1) Hide in the cabinet\n" +
-                                "2) Caught by Chef\n" +
+                                "2) Try to run past the chef\n" +
                                 "3) Run to another area");
                             switch (Input())
                             {
@@ -130,9 +138,48 @@ namespace ProgramUI
                                     kitchen = true;
                                     Console.ReadKey();
                                     break;
+                                case "2":
+                                    Console.WriteLine("You got caught!");
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("---YOU DIED---");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    inLevel = false;
+                                    isAlive = false;
+                                    break;
+                                case "3":
+                                    break;
                             }
                             break;
                         case "3":
+                            Console.WriteLine("Sebastian makes his way to the pantry and sees his crab buddies trapped in a jar");
+                            Console.WriteLine("1) Eat some crab food\n" +
+                                "2) Try to free your buddies\n" +
+                                "3) Hide");
+                            switch (Input())
+                            {
+                                case "1":
+                                    Console.WriteLine("Sebastian eats some crab food.\n" +
+                                        "While he is distracted eating his friends get cooked!");
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("---YOU FAILED TO HELP YOUR FRIENDS!---");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    inLevel = false;
+                                    isAlive = false;
+                                    break;
+                                case "2":
+                                    Console.WriteLine("You free your buddies");
+                                    pantry = true;
+                                    Console.ReadKey();
+                                    break;
+                                case "3":
+                                    Console.WriteLine("You hide...and your friends get cooked. You coward!!!");
+                                    inLevel = false;
+                                    isAlive = false;
+                                    Console.ForegroundColor = ConsoleColor.Red;
+                                    Console.WriteLine("---YOU FAILED TO HELP YOUR FRIENDS!---");
+                                    Console.ForegroundColor = ConsoleColor.White;
+                                    break;
+                            }
                             break;
                         default:
                             Console.WriteLine("Select a valid menu option");
@@ -141,7 +188,7 @@ namespace ProgramUI
                 }
             }
 
-            Console.WriteLine("You are dead try again!");
+            Console.WriteLine("Press any key to continue........");
             Console.ReadKey();
             LevelSelect();
         }
