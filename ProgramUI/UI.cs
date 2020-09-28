@@ -12,9 +12,11 @@ namespace ProgramUI
         {
             Console.Clear();
 
-            Console.WriteLine("---------------");
-            Console.WriteLine("|  Adventure  |");
-            Console.WriteLine("---------------");
+            Console.WriteLine(@"  ___         _                  _     _                    ___                      _   
+ / __|  ___  | |__   __ _   ___ | |_  (_)  __ _   _ _      / _ \   _  _   ___   ___ | |_ 
+ \__ \ / -_) | '_ \ / _` | (_-< |  _| | | / _` | | ' \    | (_) | | || | / -_) (_-< |  _|
+ |___/ \___| |_.__/ \__,_| /__/  \__| |_| \__,_| |_||_|    \__\_\  \_,_| \___| /__/  \__|
+                                                                                         ");
 
             Console.WriteLine("Press any key to begin!");
             Console.ReadKey();
@@ -30,6 +32,10 @@ namespace ProgramUI
             Console.WriteLine("This is a story about a crab named Sebastian on a quest to get the legendary screwdriver Philipsbane.");
             Console.WriteLine("Can you help him navigate the trials ahead or will you be his doom?");
             Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey();
+
+            Encounters encounters = new Encounters();
+            encounters.LevelSelect();
         }
     }
 }
