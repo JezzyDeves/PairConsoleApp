@@ -239,11 +239,11 @@ namespace ProgramUI
                         Console.WriteLine("Dodging cars on the busy streets...will he make it?");
                         Console.WriteLine("1) Run into oncoming traffic,\n" +
                                 "2) Try to outrun the cars,\n" +
-                                "3) Jump onto the sidewalk  ");
+                                "3) Jump onto the sidewalk");
                         switch (Input())
                         {
                             case "1":
-                                Console.WriteLine("Run into oncoming traffic....whew, that was close!!");
+                                Console.WriteLine("You navigate through the cars and just barely make it. Whew!");
                                 Console.WriteLine("Be careful!");
                                 street = true;
                                 Console.ReadKey();
@@ -263,13 +263,13 @@ namespace ProgramUI
                         break;
                     case "2":
                         Console.WriteLine("Can he manage to not fall into a man hole in the construction zone?");
-                        Console.WriteLine("1)Saved by claw,\n" +
-                            "2)Falls into the hole,\n" +
-                            "3)Gets saved by a passerby");
+                        Console.WriteLine("1) Try to jump over\n" +
+                            "2) Falls into the hole\n" +
+                            "3) Ask a worker for help");
                         switch (Input())
                         {
                             case "1":
-                                Console.WriteLine("Catches himself by one of his claws before he falls in!");
+                                Console.WriteLine("Sebastian just barely is unable to grab the ledge");
                                 isAlive = false;
                                 Console.ForegroundColor = ConsoleColor.Red;
                                 Console.WriteLine("---YOU DIED---");
@@ -284,7 +284,7 @@ namespace ProgramUI
                                 break;
                             case "3":
                                 //Change text to update option.
-                                Console.WriteLine("Jump onto the sidewalk! You lucky crab, you!");
+                                Console.WriteLine("You get saved by a passerby!");
                                 construction = true;
                                 Console.ReadKey();
                                 break;
@@ -299,6 +299,7 @@ namespace ProgramUI
                         {
                             case "1":
                                 Console.WriteLine("Sebastian navigates through the brisk walkers with ease!");
+                                sidewalk = true;
                                 Console.ReadKey();
                                 break;
                             case "2":
@@ -310,7 +311,10 @@ namespace ProgramUI
                                 break;
                             case "3":
                                 Console.WriteLine("Someone spots Sebastian and picks him up!");
-                                sidewalk = true;
+                                isAlive = false;
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("---YOU DIED---");
+                                Console.ForegroundColor = ConsoleColor.White;
                                 Console.ReadKey();
                                 break;
                         }
