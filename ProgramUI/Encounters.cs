@@ -355,7 +355,12 @@ namespace ProgramUI
                 "3) Search the saw table");
                 if(Input() == "1")
                 {
-                    Console.WriteLine("Testing");
+                    Console.WriteLine("Comes up empty, finding only a flathead screwdriver.");
+                    Console.ReadKey();
+                }
+                else if(Input() == "2")
+                {
+                    Console.WriteLine("Escapes a falling shovel.");
                     Console.ReadKey();
                 }
             }
