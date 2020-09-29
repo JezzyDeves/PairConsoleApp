@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ProgramUI
@@ -46,6 +47,10 @@ namespace ProgramUI
                     Console.WriteLine("2) Completed");
                     break;
             }
+            if(levelOne == true && levelTwo == true)
+            {
+                Console.WriteLine("3) The Toolshed");
+            }
 
             string input = Console.ReadLine();
 
@@ -56,6 +61,10 @@ namespace ProgramUI
             else if (input == "2" && levelTwo == false)
             {
                 LevelTwo_DodgingTraffic();
+            }
+            else if (input == "3" && levelOne == true && levelTwo == true)
+            {
+                LevelThree_TheToolshed();
             }
             else
             {
@@ -150,6 +159,7 @@ namespace ProgramUI
                                 case "1":
                                     Console.WriteLine("Sebastian sees an open cabinet to hide inside.");
                                     kitchen = true;
+                                    Console.WriteLine("Kitchen Complete!");
                                     Console.ReadKey();
                                     break;
                                 case "2":
@@ -183,6 +193,7 @@ namespace ProgramUI
                                 case "2":
                                     Console.WriteLine("You free your buddies");
                                     pantry = true;
+                                    Console.WriteLine("Pantry Complete!");
                                     Console.ReadKey();
                                     break;
                                 case "3":
@@ -225,10 +236,10 @@ namespace ProgramUI
                     LevelSelect();
                 }
                 Console.Clear();
-
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Sebastian has now found himself in the city and has to navigate the busy streets\n" +
                 "Can you help Sebastian dodge traffic?");
-
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("1) Busy street\n" +
                     "2) Construction Zone \n" +
                     "3) Sidewalk");
@@ -245,6 +256,7 @@ namespace ProgramUI
                             case "1":
                                 Console.WriteLine("You navigate through the cars and just barely make it. Whew!");
                                 Console.WriteLine("Be careful!");
+                                Console.WriteLine("Busy Street complete!");
                                 street = true;
                                 Console.ReadKey();
                                 break;
@@ -285,6 +297,7 @@ namespace ProgramUI
                             case "3":
                                 //Change text to update option.
                                 Console.WriteLine("You get saved by a passerby!");
+                                Console.WriteLine("Construction Zone complete!");
                                 construction = true;
                                 Console.ReadKey();
                                 break;
@@ -293,12 +306,13 @@ namespace ProgramUI
                     case "3":
                         Console.WriteLine("But, will he be safe on the busy sidewalks?");
                         Console.WriteLine("1) Weaves between the pedestrians,\n" +
-                            "2) Gets weary and....oh no, Sebastian!\n" +
+                            "2) RUN!\n" +
                             "3) Ask someone for help");
                         switch (Input())
                         {
                             case "1":
                                 Console.WriteLine("Sebastian navigates through the brisk walkers with ease!");
+                                Console.WriteLine("Sidewalks complete!");
                                 sidewalk = true;
                                 Console.ReadKey();
                                 break;
@@ -324,6 +338,94 @@ namespace ProgramUI
             Console.WriteLine("Press any key to continue.......");
             Console.ReadKey();
             LevelSelect();
+        }
+        public void LevelThree_TheToolshed()
+        {
+            Console.Clear();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Sebastian finds himself nearing the end of his journey. He has reached the Toolshed!");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey();
+            bool isAlive = true;
+            while (isAlive)
+            {
+                Console.Clear();
+                Console.WriteLine("1) Search the toolbox\n" +
+                "2) Search the workshop\n" +
+                "3) Search the saw table");
+                string userInput = Input();
+                if(userInput == "1")
+                {
+                    Console.WriteLine("Comes up empty, finding only a flathead screwdriver.");
+                    Console.ReadKey();
+                }
+                else if(userInput == "2")
+                {
+                    Console.WriteLine("Sebastian searches the workshop table when he hears a sound. He barely escapes a falling shovel.");
+                    Console.ReadKey();
+                }
+                else if(userInput == "3")
+                {
+                    Console.WriteLine("Sebastian sees Philipsbane at the end of the saw table.\n" +
+                        "Suddenly the saw begins racing towards him!");
+                    Console.WriteLine("1) Jump over the saw\n" +
+                        "2) Dodge the saw\n" +
+                        "3) Do nothing");
+                    userInput = Input();
+                    if(userInput == "1")
+                    {
+                        Console.WriteLine("Sebastian tries to jump over the saw but fails!");
+                        isAlive = false;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("---YOU DIED---");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else if(userInput == "2")
+                    {
+                        Console.WriteLine("Sebastian tries to dodge the saw but is too slow!");
+                        isAlive = false;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("---YOU DIED---");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else if(userInput == "3")
+                    {
+                        Console.WriteLine("Sebastian does nothing...");
+                        Thread.Sleep(1000);
+                        Console.WriteLine("The saw stops suddenly!");
+                        Console.WriteLine("Sebastian got Philipsbane!");
+                        Console.ReadKey();
+                        WinScreen();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Enter a valid option");
+                        Console.WriteLine("Press any key to continue.......");
+                        Console.ReadKey();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Enter a valid option");
+                    Console.WriteLine("Press any key to continue.......");
+                    Console.ReadKey();
+                }
+            }
+            Console.WriteLine("Press any key to continue.......");
+            Console.ReadKey();
+            LevelSelect();
+        }
+        public void WinScreen()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(@" ___ ___                   ________ __         __ 
+|   |   |.-----.--.--.    |  |  |  |__|.-----.|  |
+ \     / |  _  |  |  |    |  |  |  |  ||     ||__|
+  |___|  |_____|_____|    |________|__||__|__||__|
+                                                  ");
+            Console.ReadKey();
+            Environment.Exit(0);
         }
     }
 }
