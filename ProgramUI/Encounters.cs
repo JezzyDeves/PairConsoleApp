@@ -210,17 +210,24 @@ namespace ProgramUI
         {
             Console.Clear();
             bool isAlive = true;
-            bool hitByCar = false;
-            bool manHole = false;
-            bool stepOn = false;
-
+            bool street = false;
+            bool construction = false;
+            bool sidewalk = false;
+            
             while (isAlive)
             {
+                if (street == true && construction == true && sidewalk == true)
+                {
+                    Console.WriteLine("Level Complete");
+                    Console.WriteLine("Press any key to continue.......");
+                    Console.ReadKey();
+                    levelTwo = true;
+                    LevelSelect();
+                }
                 Console.Clear();
 
                 Console.WriteLine("Sebastian has now found himself in the city and has to navigate the busy streets\n" +
                 "Can you help Sebastian dodge traffic?");
-                Console.ReadKey();
 
                 Console.WriteLine("1) Busy street\n" +
                     "2) Construction Zone \n" +
@@ -238,6 +245,7 @@ namespace ProgramUI
                             case "1":
                                 Console.WriteLine("Run into oncoming traffic....whew, that was close!!");
                                 Console.WriteLine("Be careful!");
+                                street = true;
                                 Console.ReadKey();
                                 break;
                             case "2":
@@ -275,7 +283,9 @@ namespace ProgramUI
                                 Console.ForegroundColor = ConsoleColor.White;
                                 break;
                             case "3":
+                                //Change text to update option.
                                 Console.WriteLine("Jump onto the sidewalk! You lucky crab, you!");
+                                construction = true;
                                 Console.ReadKey();
                                 break;
                         }
@@ -299,7 +309,8 @@ namespace ProgramUI
                                 Console.ForegroundColor = ConsoleColor.White;
                                 break;
                             case "3":
-                                Console.WriteLine("Some spots Sebastian and picks him up!");
+                                Console.WriteLine("Someone spots Sebastian and picks him up!");
+                                sidewalk = true;
                                 Console.ReadKey();
                                 break;
                         }
