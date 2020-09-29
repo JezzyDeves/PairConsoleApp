@@ -9,9 +9,8 @@ namespace ProgramUI
 {
     public class Encounters
     {
-        bool levelOne = true;
-        bool levelTwo = true;
-        bool levelThree = false;
+        bool levelOne = false;
+        bool levelTwo = false;
 
         public string Input()
         {
