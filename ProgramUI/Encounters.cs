@@ -9,7 +9,8 @@ namespace ProgramUI
     public class Encounters
     {
         bool levelOne = false;
-        
+        bool levelTwo = false;
+
         public string Input()
         {
             string userInput = Console.ReadLine();
@@ -36,12 +37,25 @@ namespace ProgramUI
                     Console.WriteLine("1) Completed");
                     break;
             }
+            switch (levelTwo)
+            {
+                case false:
+                    Console.WriteLine("2) Dodging Traffic");
+                    break;
+                case true:
+                    Console.WriteLine("2) Completed");
+                    break;
+            }
 
             string input = Console.ReadLine();
 
-            if(input == "1" && levelOne == false)
+            if (input == "1" && levelOne == false)
             {
                 LevelOne_RedLobster();
+            }
+            else if (input == "2" && levelTwo == false)
+            {
+                LevelTwo_DodgingTraffic();
             }
             else
             {
@@ -73,7 +87,7 @@ namespace ProgramUI
                 bool inLevel = true;
                 while (inLevel)
                 {
-                    if(diningRoom == true && kitchen == true && pantry == true)
+                    if (diningRoom == true && kitchen == true && pantry == true)
                     {
                         levelOne = true;
                         Console.WriteLine("You win the level!");
@@ -126,7 +140,7 @@ namespace ProgramUI
                             }
                             break;
                         case "2":
-                            Console.WriteLine("After escaping the Dining Room, Sebastian now finds himself in the kitchen\n"+
+                            Console.WriteLine("After escaping the Dining Room, Sebastian now finds himself in the kitchen\n" +
                                 "Can he dodge the chef?");
                             Console.WriteLine("1) Hide in the cabinet\n" +
                                 "2) Try to run past the chef\n" +
@@ -192,7 +206,124 @@ namespace ProgramUI
             Console.ReadKey();
             LevelSelect();
         }
-        
+        public void LevelTwo_DodgingTraffic()
+        {
+            Console.Clear();
+            bool isAlive = true;
+            bool street = false;
+            bool construction = false;
+            bool sidewalk = false;
+            
+            while (isAlive)
+            {
+                if (street == true && construction == true && sidewalk == true)
+                {
+                    Console.WriteLine("Level Complete");
+                    Console.WriteLine("Press any key to continue.......");
+                    Console.ReadKey();
+                    levelTwo = true;
+                    LevelSelect();
+                }
+                Console.Clear();
 
+                Console.WriteLine("Sebastian has now found himself in the city and has to navigate the busy streets\n" +
+                "Can you help Sebastian dodge traffic?");
+
+                Console.WriteLine("1) Busy street\n" +
+                    "2) Construction Zone \n" +
+                    "3) Sidewalk");
+
+                switch (Input())
+                {
+                    case "1":
+                        Console.WriteLine("Dodging cars on the busy streets...will he make it?");
+                        Console.WriteLine("1) Run into oncoming traffic,\n" +
+                                "2) Try to outrun the cars,\n" +
+                                "3) Jump onto the sidewalk");
+                        switch (Input())
+                        {
+                            case "1":
+                                Console.WriteLine("You navigate through the cars and just barely make it. Whew!");
+                                Console.WriteLine("Be careful!");
+                                street = true;
+                                Console.ReadKey();
+                                break;
+                            case "2":
+                                Console.WriteLine("Try to outrun the cars...better luck next time, lil guy!");
+                                isAlive = false;
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("---YOU DIED---");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                break;
+                            case "3":
+                                Console.WriteLine("Jump onto the sidewalk! You lucky crab, you!");
+                                Console.ReadKey();
+                                break;
+                        }
+                        break;
+                    case "2":
+                        Console.WriteLine("Can he manage to not fall into a man hole in the construction zone?");
+                        Console.WriteLine("1) Try to jump over\n" +
+                            "2) Falls into the hole\n" +
+                            "3) Ask a worker for help");
+                        switch (Input())
+                        {
+                            case "1":
+                                Console.WriteLine("Sebastian just barely is unable to grab the ledge");
+                                isAlive = false;
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("---YOU DIED---");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                break;
+                            case "2":
+                                Console.WriteLine("Falls without warning!!!");
+                                isAlive = false;
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("---YOU DIED---");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                break;
+                            case "3":
+                                //Change text to update option.
+                                Console.WriteLine("You get saved by a passerby!");
+                                construction = true;
+                                Console.ReadKey();
+                                break;
+                        }
+                        break;
+                    case "3":
+                        Console.WriteLine("But, will he be safe on the busy sidewalks?");
+                        Console.WriteLine("1) Weaves between the pedestrians,\n" +
+                            "2) Gets weary and....oh no, Sebastian!\n" +
+                            "3) Ask someone for help");
+                        switch (Input())
+                        {
+                            case "1":
+                                Console.WriteLine("Sebastian navigates through the brisk walkers with ease!");
+                                sidewalk = true;
+                                Console.ReadKey();
+                                break;
+                            case "2":
+                                Console.WriteLine("Sebastian grows weary and meets his demise!");
+                                isAlive = false;
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("---YOU DIED---");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                break;
+                            case "3":
+                                Console.WriteLine("Someone spots Sebastian and picks him up!");
+                                isAlive = false;
+                                Console.ForegroundColor = ConsoleColor.Red;
+                                Console.WriteLine("---YOU DIED---");
+                                Console.ForegroundColor = ConsoleColor.White;
+                                Console.ReadKey();
+                                break;
+                        }
+                        break;
+                }
+            }
+            Console.WriteLine("Press any key to continue.......");
+            Console.ReadKey();
+            LevelSelect();
+        }
     }
 }
