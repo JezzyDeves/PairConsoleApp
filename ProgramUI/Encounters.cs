@@ -53,7 +53,7 @@ namespace ProgramUI
             {
                 LevelOne_RedLobster();
             }
-            else if(input == "2" && levelTwo == false)
+            else if (input == "2" && levelTwo == false)
             {
                 LevelTwo_DodgingTraffic();
             }
@@ -219,6 +219,7 @@ namespace ProgramUI
 
                 Console.WriteLine("Sebastian has now found himself in the city and has to navigate the busy streets\n" +
                 "Can you help Sebastian dodge traffic?");
+                Console.ReadKey();
 
                 Console.WriteLine("1) Busy street\n" +
                     "2) Construction Zone \n" +
@@ -227,17 +228,70 @@ namespace ProgramUI
                 switch (Input())
                 {
                     case "1":
-                        Console.WriteLine("Sebastian has to dodge all of the traffic...will he make it?");
-                        break;
-                    case "2":
-                        Console.WriteLine("Can he manage to not fall into a man hole in the construction zone?");
-                        break;
+                        Console.WriteLine("Dodging cars on the busy streets...will he make it?");
+                        Console.WriteLine("1) Run into oncoming traffic,\n" +
+                                "2) Try to outrun the cars,\n" +
+                                "3) Jump onto the sidewalk  ");
+                        switch (Input())
+                        {
+                            case "1":
+                                Console.WriteLine("Run into oncoming traffic....whew, that was close!!");
+                                Console.WriteLine("Be careful!");
+                                isAlive = false;
+                                break;
+                            case "2":
+                                Console.WriteLine("Try to outrun the cars...better luck next time, lil guy!");
+                                isAlive = false;
+                                break;
+                            case "3":
+                                Console.WriteLine("Jump onto the sidewalk! You lucky crab, you!");
+                                isAlive = true;
+                                break;
+
+
+                            case "2":
+                                Console.WriteLine("Can he manage to not fall into a man hole in the construction zone?");
+                                Console.WriteLine("1)Saved by claw,\n" +
+                                    "2)Falls into the hole,\n" +
+                                    "3)Gets saved by a passerby");
+                        }
+                        switch (Input())
+                        {
+                            case "1":
+                                Console.WriteLine("Catches himself by one of his claws before he falls in!");
+                                isAlive = false;
+                                break;
+                            case "2":
+                                Console.WriteLine("Falls without warning!!!");
+                                isAlive = True;
+                                break;
+                            case "3":
+                                Console.WriteLine("Jump onto the sidewalk! You lucky crab, you!");
+                                isAlive = true;
+                                break;
+                        }
                     case "3":
-                        Console.WriteLine("");
-                        break;
+                        Console.WriteLine("But, will he be safe on the busy sidewalks?");
+                        Console.WriteLine("1)Weaves between the pedestrians,\n" +
+                            "2)Gets weary and....oh no, Sebastian!\n" +
+                            "3)Once again, just in time....saved!!!");
+                        {
+                            switch (Input())
+                            {
+                                case "1":
+                                    Console.WriteLine("Sebastian navigates through the brisk walkers with ease!");
+                                    isAlive = false;
+                                    break;
+                                case "2":
+                                    Console.WriteLine("Sebastian grows weary and meets his demise!");
+                                    isAlive = True;
+                                    break;
+                                case "3":
+                                    Console.WriteLine("Some spots Sebastian and picks him!!");
+                                    isAlive = true;
+                                    break;
+                            }
+                            break;
+                        }
                 }
             }
-        }
-
-    }
-}
