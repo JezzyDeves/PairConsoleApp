@@ -292,9 +292,9 @@ namespace ProgramUI
                         break;
                     case "3":
                         Console.WriteLine("But, will he be safe on the busy sidewalks?");
-                        Console.WriteLine("1)Weaves between the pedestrians,\n" +
-                            "2)Gets weary and....oh no, Sebastian!\n" +
-                            "3)Once again, just in time....saved!!!");
+                        Console.WriteLine("1) Weaves between the pedestrians,\n" +
+                            "2) Gets weary and....oh no, Sebastian!\n" +
+                            "3) Ask someone for help");
                         switch (Input())
                         {
                             case "1":
