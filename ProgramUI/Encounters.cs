@@ -238,6 +238,7 @@ namespace ProgramUI
                             case "1":
                                 Console.WriteLine("Run into oncoming traffic....whew, that was close!!");
                                 Console.WriteLine("Be careful!");
+                                Console.ReadKey();
                                 break;
                             case "2":
                                 Console.WriteLine("Try to outrun the cars...better luck next time, lil guy!");
@@ -248,6 +249,7 @@ namespace ProgramUI
                                 break;
                             case "3":
                                 Console.WriteLine("Jump onto the sidewalk! You lucky crab, you!");
+                                Console.ReadKey();
                                 break;
                         }
                         break;
