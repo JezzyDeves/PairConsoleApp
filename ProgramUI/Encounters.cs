@@ -2,14 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 
 namespace ProgramUI
 {
     public class Encounters
     {
-        bool levelOne = false;
-        bool levelTwo = false;
+        bool levelOne = true;
+        bool levelTwo = true;
         bool levelThree = false;
 
         public string Input()
@@ -350,20 +351,82 @@ namespace ProgramUI
             bool isAlive = true;
             while (isAlive)
             {
+                Console.Clear();
                 Console.WriteLine("1) Search the toolbox\n" +
                 "2) Search the workshop\n" +
                 "3) Search the saw table");
-                if(Input() == "1")
+                string userInput = Input();
+                if(userInput == "1")
                 {
                     Console.WriteLine("Comes up empty, finding only a flathead screwdriver.");
                     Console.ReadKey();
                 }
-                else if(Input() == "2")
+                else if(userInput == "2")
                 {
-                    Console.WriteLine("Escapes a falling shovel.");
+                    Console.WriteLine("Sebastian searches the workshop table when he hears a sound. He barely escapes a falling shovel.");
+                    Console.ReadKey();
+                }
+                else if(userInput == "3")
+                {
+                    Console.WriteLine("Sebastian sees Philipsbane at the end of the saw table.\n" +
+                        "Suddenly the saw begins racing towards him!");
+                    Console.WriteLine("1) Jump over the saw\n" +
+                        "2) Dodge the saw\n" +
+                        "3) Do nothing");
+                    userInput = Input();
+                    if(userInput == "1")
+                    {
+                        Console.WriteLine("Sebastian tries to jump over the saw but fails!");
+                        isAlive = false;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("---YOU DIED---");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else if(userInput == "2")
+                    {
+                        Console.WriteLine("Sebastian tries to dodge the saw but is too slow!");
+                        isAlive = false;
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine("---YOU DIED---");
+                        Console.ForegroundColor = ConsoleColor.White;
+                    }
+                    else if(userInput == "3")
+                    {
+                        Console.WriteLine("Sebastian does nothing...");
+                        Thread.Sleep(1000);
+                        Console.WriteLine("The saw stops suddenly!");
+                        Console.WriteLine("Sebastian got Philipsbane!");
+                        Console.ReadKey();
+                        WinScreen();
+                    }
+                    else
+                    {
+                        Console.WriteLine("Enter a valid option");
+                        Console.WriteLine("Press any key to continue.......");
+                        Console.ReadKey();
+                    }
+                }
+                else
+                {
+                    Console.WriteLine("Enter a valid option");
+                    Console.WriteLine("Press any key to continue.......");
                     Console.ReadKey();
                 }
             }
+            Console.WriteLine("Press any key to continue.......");
+            Console.ReadKey();
+            LevelSelect();
+        }
+        public void WinScreen()
+        {
+            Console.ForegroundColor = ConsoleColor.Green;
+            Console.WriteLine(@" ___ ___                   ________ __         __ 
+|   |   |.-----.--.--.    |  |  |  |__|.-----.|  |
+ \     / |  _  |  |  |    |  |  |  |  ||     ||__|
+  |___|  |_____|_____|    |________|__||__|__||__|
+                                                  ");
+            Console.ReadKey();
+            Environment.Exit(0);
         }
     }
 }
