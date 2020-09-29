@@ -10,6 +10,7 @@ namespace ProgramUI
     {
         bool levelOne = false;
         bool levelTwo = false;
+        bool levelThree = false;
 
         public string Input()
         {
@@ -46,6 +47,10 @@ namespace ProgramUI
                     Console.WriteLine("2) Completed");
                     break;
             }
+            if(levelOne == true && levelTwo == true)
+            {
+                Console.WriteLine("3) The Toolshed");
+            }
 
             string input = Console.ReadLine();
 
@@ -56,6 +61,10 @@ namespace ProgramUI
             else if (input == "2" && levelTwo == false)
             {
                 LevelTwo_DodgingTraffic();
+            }
+            else if (input == "3" && levelOne == true && levelTwo == true)
+            {
+                LevelThree_TheToolshed();
             }
             else
             {
@@ -150,6 +159,7 @@ namespace ProgramUI
                                 case "1":
                                     Console.WriteLine("Sebastian sees an open cabinet to hide inside.");
                                     kitchen = true;
+                                    Console.WriteLine("Kitchen Complete!");
                                     Console.ReadKey();
                                     break;
                                 case "2":
@@ -183,6 +193,7 @@ namespace ProgramUI
                                 case "2":
                                     Console.WriteLine("You free your buddies");
                                     pantry = true;
+                                    Console.WriteLine("Pantry Complete!");
                                     Console.ReadKey();
                                     break;
                                 case "3":
@@ -225,10 +236,10 @@ namespace ProgramUI
                     LevelSelect();
                 }
                 Console.Clear();
-
+                Console.ForegroundColor = ConsoleColor.Yellow;
                 Console.WriteLine("Sebastian has now found himself in the city and has to navigate the busy streets\n" +
                 "Can you help Sebastian dodge traffic?");
-
+                Console.ForegroundColor = ConsoleColor.White;
                 Console.WriteLine("1) Busy street\n" +
                     "2) Construction Zone \n" +
                     "3) Sidewalk");
@@ -245,6 +256,7 @@ namespace ProgramUI
                             case "1":
                                 Console.WriteLine("You navigate through the cars and just barely make it. Whew!");
                                 Console.WriteLine("Be careful!");
+                                Console.WriteLine("Busy Street complete!");
                                 street = true;
                                 Console.ReadKey();
                                 break;
@@ -285,6 +297,7 @@ namespace ProgramUI
                             case "3":
                                 //Change text to update option.
                                 Console.WriteLine("You get saved by a passerby!");
+                                Console.WriteLine("Construction Zone complete!");
                                 construction = true;
                                 Console.ReadKey();
                                 break;
@@ -293,12 +306,13 @@ namespace ProgramUI
                     case "3":
                         Console.WriteLine("But, will he be safe on the busy sidewalks?");
                         Console.WriteLine("1) Weaves between the pedestrians,\n" +
-                            "2) Gets weary and....oh no, Sebastian!\n" +
+                            "2) RUN!\n" +
                             "3) Ask someone for help");
                         switch (Input())
                         {
                             case "1":
                                 Console.WriteLine("Sebastian navigates through the brisk walkers with ease!");
+                                Console.WriteLine("Sidewalks complete!");
                                 sidewalk = true;
                                 Console.ReadKey();
                                 break;
@@ -324,6 +338,27 @@ namespace ProgramUI
             Console.WriteLine("Press any key to continue.......");
             Console.ReadKey();
             LevelSelect();
+        }
+        public void LevelThree_TheToolshed()
+        {
+            Console.Clear();
+
+            Console.ForegroundColor = ConsoleColor.Yellow;
+            Console.WriteLine("Sebastian finds himself nearing the end of his journey. He has reached the Toolshed!");
+            Console.ForegroundColor = ConsoleColor.White;
+            Console.ReadKey();
+            bool isAlive = true;
+            while (isAlive)
+            {
+                Console.WriteLine("1) Search the toolbox\n" +
+                "2) Search the workshop\n" +
+                "3) Search the saw table");
+                if(Input() == "1")
+                {
+                    Console.WriteLine("Testing");
+                    Console.ReadKey();
+                }
+            }
         }
     }
 }
